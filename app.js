@@ -11,7 +11,7 @@ function generateOTP() {
 }
 
 
-app.get("/:width?/:height?/", (req, res) => {
+app.get("/test/:width?/:height?/", (req, res) => {
     const width = parseInt(req.params.width) || 200;
     const height = parseInt(req.params.height) || 100;
     const { image } = captcha(width, height);
@@ -32,7 +32,8 @@ app.get("/:width?/:height?/", (req, res) => {
             console.error(`Error sending OTP: ${error.message}`);
 
         });
-    res.render('form.ejs', { image });
+    res.send("Hii")
+    // res.render('form.ejs', { image });
 });
 
 // Captcha generation, returns PNG data URL and validation text
