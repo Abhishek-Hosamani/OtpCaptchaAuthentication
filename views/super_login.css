@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #03a9f4;
+    transition: 0.5s;
+}
+
+body.active {
+    background: rgb(200, 43, 43);
+}
+
+.container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+
+}
+
+.bluebg {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+}
+
+.bluebg .box {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* above line applies the flex in the column wise Direction . */
+}
+
+.bluebg .box h2 {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500px;
+    margin-bottom: 10px;
+}
+
+.bluebg .box button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #efff;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: 500;
+    border: none;
+}
+
+.formBx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.25);
+    transition: 1s ease-in-out;
+    overflow: hidden;
+    /*while sliding from the sign in to sign up inorder to avoid it at the left side .*/
+}
+
+/* whenever the active element is added into the classlist of the formBx element it is shifted with 50 percent  */
+.formBx.active {
+    left: 50%;
+}
+
+.formBx .form {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 50px;
+    transition: 0.5s;
+}
+
+.formBx .form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formBx .form form h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+
+.formBx .form form input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+/* whenever we click on the signIn active will be removed to the formBx So that sighnIn form will be at left :0 in the form (i.e at its actual position) */
+
+.formBx .signUpForm {
+    left: 100%;
+    /* whenever we click on the signUp active will be set up to the formBx So that sighnUp form will be at left :0 in the form (i.e at its actual position) */
+}
+
+.formBx.active .signUpForm {
+    left: 0;
+}
+
+.formBx .form form input[type="submit"] {
+    background: #03a9f4;
+    border: none;
+    color: #fff;
+    max-width: 100px;
+}
+
+.formBx.active .signUpForm input[type="submit"] {
+    background: rgb(220, 63, 63);
+    border: none;
+    color: #fff;
+    max-width: 100px;
+}
+
+/* when the active element is added into the formBx element the signInForm will not slide along with the formBx It will be shifted by 100%  */
+/* that is signInForm remains in the same place if the active element is added to the formBx means also */
+
+.formBx.active .signInForm {
+    left: -100%;
+}
+
+.formBx .signInForm {
+    transition-delay: 0.25s;
+}
+
+.formBx .signUpForm {
+    transition-delay: 0.25s;
+}
+
+
+@media(max-width:991px) {
+    .container {
+        max-width: 400px;
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container .bluebg {
+        top: 0;
+        height: 100%;
+    }
+
+    .formBx {
+        width: 100%;
+        height: 500px;
+        top: 0;
+        box-shadow: none;
+        /* white boxes leaves 150px for sign in and sidn up buttons. */
+    }
+
+    .bluebg .box {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        bottom: 0;
+    }
+
+    .box.signin {
+        top: 0px;
+        /* sign in form is attached in the upward direction  */
+    }
+
+    .formBx.active {
+        left: 0;
+        top: 150px;
+        /* formBx will move 150px downwards if this happens */
+    }
+}
