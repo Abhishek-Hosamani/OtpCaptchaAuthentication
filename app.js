@@ -11,27 +11,27 @@ function generateOTP() {
 }
 
 
-app.get("/test/:width?/:height?/", (req, res) => {
-    const width = parseInt(req.params.width) || 200;
-    const height = parseInt(req.params.height) || 100;
-    const { image } = captcha(width, height);
-    const phoneNumber = '+91 6362197359';
-    const otp = generateOTP();
+app.get('/test', (req, res) => {
+    // const width = 200;
+    // const height = 100;
+    // const { image } = captcha(width, height);
+    // const phoneNumber = '+91 6362197359';
+    // const otp = generateOTP();
 
 
-    client.messages.create({
-        body: `Your OTP is: ${otp}`,
-        to: phoneNumber,
-        from: '+1 720 466 7552' // Your Twilio phone number
-    })
-        .then(message => {
-            console.log(`OTP sent to ${phoneNumber}: ${message.sid}`);
+    // client.messages.create({
+    //     body: `Your OTP is: ${otp}`,
+    //     to: phoneNumber,
+    //     from: '+1 720 466 7552' // Your Twilio phone number
+    // })
+    //     .then(message => {
+    //         console.log(`OTP sent to ${phoneNumber}: ${message.sid}`);
 
-        })
-        .catch(error => {
-            console.error(`Error sending OTP: ${error.message}`);
+    //     })
+    //     .catch(error => {
+    //         console.error(`Error sending OTP: ${error.message}`);
 
-        });
+    //     });
     res.send("Hii")
     // res.render('form.ejs', { image });
 });
