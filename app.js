@@ -10,7 +10,9 @@ function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000);
 }
 
-
+app.get('/', (req, res) => {
+    res.send('This is IS app')
+})
 app.get('/test', (req, res) => {
     // const width = 200;
     // const height = 100;
