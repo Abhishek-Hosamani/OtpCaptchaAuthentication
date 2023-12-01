@@ -1,6 +1,6 @@
 const { createCanvas } = require("canvas");
 
-// https://gist.github.com/wesbos/1bb53baf84f6f58080548867290ac2b5
+
 const alternateCapitals = str =>
     [...str].map((char, i) => char[`to${i % 2 ? "Upper" : "Lower"}Case`]()).join("");
 
@@ -54,7 +54,7 @@ const configureText = (ctx, width, height) => {
 const generate = (width, height) => {
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
-    ctx.rotate(randomRotation());
+    // ctx.rotate(randomRotation());
     const text = configureText(ctx, width, height);
     return {
         image: canvas.toDataURL(),
